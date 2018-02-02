@@ -4,5 +4,5 @@
  * email:413401168@qq.com.
  * use:auto...
  */
-module.exports = require('./lib/index');
-exports.default = require('./lib/index');
+module.exports = require('./lib/datePicker');
+exports.default = require('./lib/datePicker');

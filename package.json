@@ -1,8 +1,8 @@
 {
-  "name": "react-datepicker",
-  "version": "1.0.0",
+  "name": "react-datepicker-mobile",
+  "version": "1.0.2",
   "description": "a mobile datepicker component",
-  "main": "datePicker.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src -d lib"

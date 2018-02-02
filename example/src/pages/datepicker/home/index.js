@@ -6,7 +6,7 @@
  */
 import React,{Component} from 'react'
 require ("./index.less");
-import DatePicker from "../../../../../lib/datePicker"
+import DatePicker from "react-datepicker-mobile"
 class Index extends Component{
     constructor(props) {
         super(props)
