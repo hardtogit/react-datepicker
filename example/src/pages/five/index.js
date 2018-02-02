@@ -9,7 +9,11 @@ import NavBar from "../../component/navBar"
 import img1 from "../../assets/img/201610310548064295.jpg"
 import img2 from "../../assets/img/201711210941258146.jpg"
 import img3 from "../../assets/img/201712250712192630.jpg"
+import DatePicker from "../../../../lib/datePicker"
 class Index extends Component{
+    componentDidMount(){
+        this.refs.datePicker.toggle()
+    }
     render(){
         return(
             <div className="eg-conteiner">
@@ -25,6 +29,7 @@ class Index extends Component{
                         <img className="item" src={img3} alt=""/>
                     </div>
                 </Swiper>
+                <DatePicker ref="datePicker" value="2014-04-02" onConfirm={this.handle}></DatePicker>
             </div>
         )
     }

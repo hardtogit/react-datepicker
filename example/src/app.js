@@ -4,6 +4,7 @@
 import React,{Component} from 'react'
 import {Router, Route, BrowserRouter, Redirect, IndexRedirect ,history,Switch} from 'react-router-dom';
 import Home from "./pages/home/index"
+import PickerHome from "./pages/datepicker/home"
 import One from "./pages/one/index"
 import Two from "./pages/two/index"
 import Three from "./pages/three/index"
@@ -14,13 +15,14 @@ class Index extends Component{
         return(
             <BrowserRouter history={history}>
                 <Switch>
-                <Route path="/home" component={Home}> </Route>
+                <Route path="/datepicker" component={PickerHome}> </Route>
+                <Route path="/swiper" component={Home}> </Route>
                 <Route  path="/example/one" component={One}/>
                     <Route  path="/example/two" component={Two}/>
                     <Route  path="/example/three" component={Three}/>
                     <Route  path="/example/four" component={Four}/>
                     <Route  path="/example/five" component={Five}/>
-                    <Redirect from="*" to="/home"></Redirect>
+                    <Redirect from="*" to="/swiper"></Redirect>
                 </Switch>
             </BrowserRouter>
         )

@@ -85,7 +85,15 @@ export const swiper_container ={
         overflow:"hidden"
     },
     ui_picker_item_selected= {
-            color: "#000"
+        height: "36px",
+        lineHeight: "36px",
+        textAlign: "center",
+        color: "#999",
+        fontSize: "18px",
+        whiteSpace:"nowrap",
+        textOverflow:"ellipsis",
+        overflow:"hidden",
+        color: "#000"
         },
     ui_picker_center={
             height: "36px",
@@ -99,5 +107,73 @@ export const swiper_container ={
             pointerEvents: "none",
             borderTop: "1px solid #d7d7d7",
             borderBottom: "1px solid #d7d7d7"
-        }
-
+        },
+    ui_popup_title={
+            height: "44px",
+            fontSize: "17px",
+            background: "#ccc",
+            padding: "0 10px",
+            lineHeight: "44px",
+    },
+    btn_left={
+        display: "inline-block",
+        float: "left",
+        color: "#007aff"
+    },
+    btn_right={
+        display: "inline-block",
+        float: "right",
+        color: "#007aff"
+    },
+    pickerModal={
+        position: "absolute",
+        left: 0,
+        bottom: 0,
+        zIndex: 2,
+        width: "100%",
+        backgroundColor: "#efeff4",
+        transform: "translate(0, 100%)",
+        backfaceVisibility: "hidden",
+        transition: "transform .3s"
+    },
+    ui_popup_content={
+        height: "216px",
+        width: "100%",
+        display: "flex",
+        overflow: "hidden",
+        // -webkit-overflow-scrolling : touch,
+    },
+    modal_overlay ={
+        position: "fixed",
+        top: 0,
+        left: 0,
+        bottom:0,
+        zIndex: 1000,
+        backgroundColor:"rgba(11,11,11,0.4)",
+        width: "100%"
+    },
+    modal ={
+        position: "fixed",
+        top: "calc(100% - 260px)",
+        left: 0,
+        bottom: 0,
+        right: 0,
+        zIndex: 1001,
+        backgroundColor: "#fff",
+        width: "100%",
+        height: "260px",
+    },
+    pickerModalActive={
+        position: "absolute",
+        left: 0,
+        bottom: 0,
+        zIndex: 2,
+        width: "100%",
+        backgroundColor: "#efeff4",
+        backfaceVisibility: "hidden",
+        transition: "transform .3s",
+        transform: "translate(0, 0)",
+        },
+    pickerModalToggle={
+       display:"block"
+    }

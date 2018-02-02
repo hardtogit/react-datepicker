@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames'
 import _ from 'lodash';
 import * as styles from './style'
+import {ui_picker_item} from "./style";
 const getIndex = (list, item) => {
     if (list && list.length < 1) {
         return 0;
@@ -198,8 +199,9 @@ class Picker extends React.Component {
                     {
                         this.props.data.list.map((data, index) => {
                             const displayValue = this.props.data.displayValue(data);
-                            return <div key={index} style={styles.ui_picker_item}
-                                        className={classNames([styles.ui_picker_item,styles[this.getSelectedClass(index)]])   }>
+
+                            return <div key={index} style={this.selectedIndex==index&&styles.ui_picker_item_selected||ui_picker_item}
+                                        className='ui_picker_item'>
                                 {displayValue}
                             </div>
                         })
