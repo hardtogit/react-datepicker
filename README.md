@@ -1,10 +1,8 @@
-react-mobile-swiper
+react-datepicker-mobile
 ================
 
->a simple react-swiper component <a href="http://114.215.68.43/home">http://114.215.68.43/home</a>
-## Demo
+>a simple react-swiper component <a href="http://114.215.68.43/home" target="_blank">http://114.215.68.43/datepicker</a>
 
-<img src="https://raw.githubusercontent.com/hardtogit/react-mobile-swiper/master/example/src/assets/img/demo.gif" alt="YaMOrzoWHp.jpg">
 ## get start
 
 #### step one
@@ -28,20 +26,21 @@ npm start
 ### Example with defaults
 #### install
 ```bash
-npm intsall --save react-mobile-swiper
+npm intsall --save react-datepicker-mobile
 ```
 #### Creating an example component:
 ```javascript
 import React,{Component} from 'react';
-import Swiper from 'react-mobile-swiper';
-class Example extents Component{
+import DatePicker from 'react-datepicker-mobile';
+class Index extents Component{
+  componentDidMount(){
+  this.refs.datePicker.toggle();
+  }
   render: function() {
     return (
-      <Swiper>
-       <div></div>
-      </Swiper>
+      <DatePicker ref="datePicker"> </DatePicker>  
     );
   },
 };
-export default Example;
+export default Index;
 
