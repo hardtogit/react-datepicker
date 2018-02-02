@@ -1,7 +1,7 @@
 react-datepicker-mobile
 ================
 
->a simple react-swiper component <a href="http://114.215.68.43/home" target="_blank">http://114.215.68.43/datepicker</a>
+>a simple datePicker component <a href="http://114.215.68.43/home" target="_blank">http://114.215.68.43/datepicker</a>
 
 ## get start
 
