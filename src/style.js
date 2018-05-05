@@ -137,7 +137,7 @@ export const swiper_container ={
         transition: "transform .3s"
     },
     ui_popup_content={
-        height: "216px",
+        height: "200px",
         width: "100%",
         display: "flex",
         overflow: "hidden",
@@ -174,6 +174,14 @@ export const swiper_container ={
         transition: "transform .3s",
         transform: "translate(0, 0)",
         },
-    pickerModalToggle={
-       display:"block"
+    datePicker_labels={
+        display:"flex",
+        height:"44px",
+        lineHeight:"44px",
+        backgroundColor: "rgb(221, 221, 221)",
+        borderBottom:'1px solid rgba(0, 0, 0, 0.1)'
+    },
+    datePicker_label={
+        flex:1,
+        textAlign:"center"
     }

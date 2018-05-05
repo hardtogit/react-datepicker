@@ -4,9 +4,12 @@
  * email:413401168@qq.com.
  * use:auto...
  */
+
+
+//TODO 感觉这个版本写得很low....
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
-import Picker from "./pickerLine"
+import Picker from "./Line"
 import * as styles from './style'
 class Index extends Component {
     constructor(props) {
@@ -19,6 +22,14 @@ class Index extends Component {
             optionGroups:{
 
             },
+        };
+        this.mappingObj={
+            year:'年',
+            month:'月',
+            day:"日",
+            h:"时",
+            m:"分",
+            s:"秒"
         }
     }
     static propTypes = {
@@ -42,7 +53,7 @@ class Index extends Component {
             return str.toString()
         }
     };
-    componentWillMount(){
+    componentDidMount(){
         const dataSource={
             year:{
                 list:this.generateNumberArray(this.props.beginYear, this.props.endYear),
@@ -59,7 +70,7 @@ class Index extends Component {
                 }
             },
             day: {
-                list:this.generateNumberArray(1, 31),
+                list:this.returnDays(this.props.value.split('-')[0],this.props.value.split('-')[1])||this.generateNumberArray(1, 31),
                 defaultValue:this.props.value.split('-')[2]||this.addStr(new Date().getDate().toString()),
                 displayValue (item) {
                     return item;
@@ -107,7 +118,15 @@ class Index extends Component {
             }
         });
         this.setState({
-            optionGroups:selectDataSource
+            optionGroups:selectDataSource,
+            valueGroups:{
+                year:this.props.value.split('-')[0]||new Date().getFullYear().toString(),
+                month:this.props.value.split('-')[1]|| this.addStr((new Date().getMonth()+1).toString()),
+                day:this.props.value.split('-')[2]||this.addStr(new Date().getDate().toString()),
+                h:this.addStr(new Date().getHours().toString()),
+                m:this.addStr(new Date().getMinutes().toString()),
+                s:this.addStr(new Date().getSeconds().toString())
+            }
         })
     }
     generateNumberArray=(begin, end)=> {
@@ -129,6 +148,21 @@ class Index extends Component {
                 return true
             }else{
                 return false
+            }
+        }
+    };
+    returnDays=(year,month,preMonth)=>{
+        if (month === '02') {
+            if(this.isRun(year)){
+                 return this.generateNumberArray(1, 29)
+            }else{
+                return this.generateNumberArray(1, 28)
+            }
+        } else{
+            if (['01', '03', '05', '07', '08', '10', '12'].indexOf(month) > -1) {
+                return this.generateNumberArray(1, 31)
+            } else if (['01', '03', '05', '07', '08', '10', '12'].indexOf(month) < 0) {
+                return this.generateNumberArray(1, 30)
             }
         }
     };
@@ -184,55 +218,17 @@ class Index extends Component {
                         };
                     }
                 } else if (name === 'month') {
-                    if (value === '02') {
-                        if(this.isRun(valueGroups.year)){
-                            nextState.optionGroups = {
-                                ...optionGroups,
-                                day:{
-                                    list:this.generateNumberArray(1, 29),
-                                    defaultValue:valueGroups.day,
-                                    displayValue (item) {
-                                        return item;
-                                    }
-                                }
-                            };
-                        }else{
-                            nextState.optionGroups = {
-                                ...optionGroups,
-                                day: {
-                                    list:this.generateNumberArray(1, 28),
-                                    defaultValue:valueGroups.day,
-                                    displayValue (item) {
-                                        return item;
-                                    }
-                                }
-                            };
-                        }
-                    } else if (['01', '03', '05', '07', '08', '10', '12'].indexOf(value) > -1 &&
-                        ['01', '03', '05', '07', '08', '10', '12'].indexOf(valueGroups.month) < 0) {
                         nextState.optionGroups = {
                             ...optionGroups,
                             day:{
-                                list:this.generateNumberArray(1, 31),
+                                list:this.returnDays(valueGroups.year,value,valueGroups.month),
                                 defaultValue:valueGroups.day,
                                 displayValue (item) {
                                     return item;
                                 }
                             }
                         };
-                    } else if (['01', '03', '05', '07', '08', '10', '12'].indexOf(value) < 0 &&
-                        ['01', '03', '05', '07', '08', '10', '12'].indexOf(valueGroups.month) > -1) {
-                        nextState.optionGroups = {
-                            ...optionGroups,
-                            day: {
-                                list:this.generateNumberArray(1, 30),
-                                defaultValue:valueGroups.day,
-                                displayValue (item) {
-                                    return item;
-                                }
-                            }
-                        };
-                    }
+
                 }else if(name==="day"){
                     nextState.optionGroups = {
                         ...optionGroups,
@@ -243,7 +239,6 @@ class Index extends Component {
                     };
                 }
             }
-
             return nextState;
         });
     };
@@ -280,6 +275,17 @@ class Index extends Component {
                             <span ref="cancelButton" style={styles.btn_left}>{text1}</span>
                             <span ref="confirmButton" style={styles.btn_right}>{text2}</span>
                         </div>
+                        <div className="datePicker_labels" style={styles.datePicker_labels}>
+                            {(()=>{
+                                let pickerArr=[]
+                                for(name in optionGroups){
+                                    pickerArr.push(
+                                        <div className="datePicker_label" style={styles.datePicker_label}>{this.mappingObj[name]}</div>
+                                    )
+                                }
+                                return pickerArr
+                            })()}
+                        </div>
                         <div className='ui_popup_content' style={styles.ui_popup_content}>
                             {(()=>{
                                 let pickerArr=[]
@@ -287,7 +293,7 @@ class Index extends Component {
                                     pickerArr.push(
                                         <Picker
                                             onChange={this.handleChange}
-                                            data={optionGroups[name]}
+                                            dataSource={optionGroups[name]}
                                             type={name}
                                         />
                                     )
