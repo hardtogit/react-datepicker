@@ -1,7 +1,7 @@
 react-datepicker-mobile
 ================
 
->a simple datePicker component <a href="http://114.215.68.43/home" target="_blank">http://114.215.68.43/datepicker</a>
+>a simple datePicker component <a href="https://hardtogit.github.io/react-datepicker/example/build/index.html" target="_blank">https://hardtogit.github.io/react-datepicker/example/build/index.html</a>
 
 ## get start
 
