@@ -291,7 +291,7 @@ class Index extends Component {
                                 let pickerArr=[]
                                 for(name in optionGroups){
                                     pickerArr.push(
-                                        <Picker
+                                        <Picker key={name}
                                             onChange={this.handleChange}
                                             dataSource={optionGroups[name]}
                                             type={name}
