@@ -4,9 +4,6 @@
  * email:413401168@qq.com.
  * use:auto...
  */
-
-
-//TODO 感觉这个版本写得很low....
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
 import Picker from "./Line"
