@@ -105,12 +105,12 @@ class Index extends Component {
         });
         this.transformX=20 * activeItem;
         this.props.onChange(this.props.type, this.props.dataSource.list[activeItem])
+        this.line.style.transform='perspective(1000px) rotateY(0deg) rotateX(' + this.transformX + 'deg)'
     };
 
     render() {
         const {
             activeItem,
-            transformX
         } = this.state;
 
         return (
@@ -123,7 +123,7 @@ class Index extends Component {
                         this.line = line
                     }} className="pickerList" style={Object.assign({}, styles.pickerRule, styles.pickerList, {
                         border: 'none',
-                        transform: 'perspective(1000px) rotateY(0deg) rotateX(' + this.transformX + 'deg)',
+                        // transform: 'perspective(1000px) rotateY(0deg) rotateX(' + this.transformX + 'deg)',
                         transitionDuration: 0
                     })}>
                         {
