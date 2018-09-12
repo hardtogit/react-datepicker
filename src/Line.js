@@ -10,6 +10,8 @@ class Index extends Component {
         };
         this.startY=0;
         this.distances=0;
+        this.lastMoveTime=0;
+        this.lastMoveStart=0;
     }
     static defaultProps={
         dataSource:{list:((start,end)=>{
@@ -45,16 +47,52 @@ class Index extends Component {
             })
         }
     }
+    updateInertiaParams = (e)=> {
+        let point = e.changedTouches ? e.changedTouches[0] : e;
+        let nowTime = e.timeStamp || Date.now();
+        if (nowTime - this.lastMoveTime > 300) {
+            this.lastMoveTime = nowTime;
+            this.lastMoveStart = point.pageY;
+        }
+    };
+    countDistance =(e)=>{
+        let nowTime = e.timeStamp || Date.now();
+        let v = (e.nativeEvent.changedTouches[0].pageY - this.lastMoveStart) / (nowTime - this.lastMoveTime); //最后一段时间手指划动速度
+        let dir = v > 0 ? -1 : 1; //加速度方向
+        let deceleration = dir * 0.0006 * -1;
+        let duration = Math.abs(v / deceleration); // 速度消减至0所需时间
+        let dist = v * duration / 2; //最终移动多少
+
+        (function(nowTime, startAngle, distAngle, duration) {
+            var frameInterval = 13;
+            var stepCount = duration / frameInterval;
+            var stepIndex = 0;
+            (function inertiaMove() {
+                if (self.stopInertiaMove) return;
+                var newAngle = self.quartEaseOut(stepIndex, startAngle, distAngle, stepCount);
+                self.setAngle(newAngle);
+                stepIndex++;
+                if (stepIndex > stepCount - 1 || newAngle < self.beginExceed || newAngle > self.endExceed) {
+                    self.endScroll();
+                    return;
+                }
+                setTimeout(inertiaMove, frameInterval);
+            })();
+        })(nowTime, startAngle, distAngle, duration);
+
+    }
     handleTouchStart=(e)=>{
         e.preventDefault();
+        this.updateInertiaParams(e);
         this.startY = e.nativeEvent.changedTouches[0].pageY;
         this.distances=this.state.transformX;
     };
     handleTouchMove=(e)=>{
         e.preventDefault();
+        this.updateInertiaParams(e);
         let distance=e.nativeEvent.changedTouches[0].pageY-this.startY;
-        let result=this.distances-distance;
-        let activeItem=Math.round((this.distances-distance)/20);
+        let result=this.distances-distance/38*20;
+        let activeItem=Math.round(result/20);
         if(activeItem>=this.props.dataSource.list.length+1){
             activeItem=this.props.dataSource.list.length+1;
             result=20*activeItem
@@ -70,8 +108,9 @@ class Index extends Component {
     handleTouchEnd=(e)=>{
         //TODO  还未添加缓动效果
         e.preventDefault();
+        this.countDistance(e);
         let distance=e.nativeEvent.changedTouches[0].pageY-this.startY;
-        let activeItem=Math.round((this.distances-distance)/20);
+        let activeItem=Math.round((this.distances-distance/38*20)/20);
         if(activeItem<0){
             activeItem=0
         }else if(activeItem>this.props.dataSource.list.length-1){
