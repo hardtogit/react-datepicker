@@ -6,7 +6,7 @@
  */
 import React,{Component} from 'react'
 require ("./index.less");
-import DatePicker from "../../../../../lib/datePicker"
+import RegionPicker from "../../../../../lib/regionPicker"
 class Index extends Component{
     constructor(props) {
         super(props)
@@ -40,13 +40,9 @@ class Index extends Component{
     }
     render(){
         return(
-         <div className="swiper-contanier">
+         <div className="swiper-contanier" style={{position:'fixed',width:'100%',height:'100%'}}>
              <div className="btn" onClick={()=>{this.handleClick(1)}}>{this.state.value1||"选择日期"}</div>
-             <DatePicker ref="datePicker1" value="2014-04-02" labels="year,month,day" onConfirm={this.handleConfirm1}></DatePicker>
-             <div className="btn" onClick={()=>{this.handleClick(2)}}>{this.state.value2||"选择时间"}</div>
-             <DatePicker ref="datePicker2"  labels="h,m,s" onConfirm={this.handleConfirm2}></DatePicker>
-             <div className="btn" onClick={()=>{this.handleClick(3)}}>{this.state.value3||"全部时间"}</div>
-             <DatePicker ref="datePicker3"  labels="year,month,day,h,m,s" onConfirm={this.handleConfirm3}></DatePicker>
+             <RegionPicker ref="datePicker1" optionGroups={["province",'city','region']}></RegionPicker>
         </div>
 
         )

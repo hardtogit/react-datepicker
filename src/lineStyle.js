@@ -36,7 +36,7 @@ export const picker = {
         transformStyle:'preserve-3d',
         WebkitTransformStyle:'preserve-3d',
         padding:0,
-        transition:'150ms ease-out',
+        // transition:'150ms ease-out',
         listStyle:'none',
         outline:0
     },

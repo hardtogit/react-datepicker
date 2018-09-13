@@ -150,7 +150,8 @@ export const swiper_container ={
         bottom:0,
         zIndex: 1000,
         backgroundColor:"rgba(11,11,11,0.4)",
-        width: "100%"
+        width: "100%",
+        height:"100%"
     },
     modal ={
         position: "fixed",
@@ -164,7 +165,7 @@ export const swiper_container ={
         height: "260px",
     },
     pickerModalActive={
-        position: "absolute",
+        position: "fixed",
         left: 0,
         bottom: 0,
         zIndex: 2,
@@ -173,6 +174,7 @@ export const swiper_container ={
         backfaceVisibility: "hidden",
         transition: "transform .3s",
         transform: "translate(0, 0)",
+        userSelect: "none",
         },
     datePicker_labels={
         display:"flex",
