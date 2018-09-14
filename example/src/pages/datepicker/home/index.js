@@ -5,6 +5,7 @@
  * use:auto...
  */
 import React,{Component} from 'react'
+import 'babel-polyfill'
 require ("./index.less");
 import RegionPicker from "../../../../../lib/regionPicker"
 class Index extends Component{
