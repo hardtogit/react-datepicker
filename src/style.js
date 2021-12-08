@@ -4,45 +4,45 @@
  * email:413401168@qq.com.
  * use:auto...
  */
-export const swiper_container ={
+export const swiper_container = {
     margin: "0 auto",
     position: "relative",
     overflow: "hidden",
     listStyle: "none",
     padding: "0",
     zIndex: 1
+},
+    swiper_wrapper = {
+        position: "relative",
+        width: "100%",
+        height: "100%",
+        zIndex: "1",
+        display: "-webkit-box",
+        transitionProperty: "transform",
+        boxSizing: "content-box"
     },
-    swiper_wrapper={
-    position: "relative",
-    width: "100%",
-    height: "100%",
-    zIndex: "1",
-    display: "-webkit-box",
-    transitionProperty: "transform",
-    boxSizing: "content-box"
+    swiper_slide = {
+        textAlign: 'center',
+        fontSize: '18px',
+        background: "#fff",
+        display: "-webkit-box",
+        display: "flex",
+        alignItems: "center"
     },
-    swiper_slide ={
-    textAlign: 'center',
-    fontSize: '18px',
-    background: "#fff",
-    display: "-webkit-box",
-    display: "flex",
-    alignItems: "center"
+    img = {
+        width: "100%"
     },
-    img={
-    width: "100%"
+    swiper_pagination = {
+        position: 'absolute',
+        left: '50%',
+        bottom: '12px',
+        zIndex: 2,
+        WebkitTransform: "translate(-50%)",
+        MozTransform: 'translate(-50%)',
+        transform: "translate(-50%)",
+        OTransform: "translate(-50%)",
     },
-    swiper_pagination={
-         position: 'absolute',
-         left: '50%',
-         bottom: '12px',
-         zIndex: 2,
-         WebkitTransform: "translate(-50%)",
-         MozTransform: 'translate(-50%)',
-         transform: "translate(-50%)",
-         OTransform: "translate(-50%)",
-     },
-    pagination_item={
+    pagination_item = {
         display: "inline-block",
         width: "12px",
         height: "12px",
@@ -50,82 +50,82 @@ export const swiper_container ={
         backgroundColor: "#fff",
         marginLeft: "12px"
     },
-    pagination_item_active={
+    pagination_item_active = {
         display: "inline-block",
         width: "12px",
         height: "12px",
         borderRadius: "50%",
         backgroundColor: "#de3031",
         marginLeft: "12px"
-},
-    ui_picker_wrapper={
-    width: "100%",
-    height: "180px",
-    overflow:"hidden",
-    position: "relative",
-    pointerEvents: "auto",
-    marginTop: "18px",
-    touchAction: "none",
-    flex: 1
-},
-    ui_picker={
+    },
+    ui_picker_wrapper = {
+        width: "100%",
+        height: "180px",
+        overflow: "hidden",
+        position: "relative",
+        pointerEvents: "auto",
+        marginTop: "18px",
+        touchAction: "none",
+        flex: 1
+    },
+    ui_picker = {
         width: "100%",
         transition: "transform",
         transitionDuration: ".3s",
         transitionTimingFunction: "ease-out",
     },
-    ui_picker_item={
+    ui_picker_item = {
         height: "36px",
         lineHeight: "36px",
         textAlign: "center",
         color: "#999",
         fontSize: "18px",
-        whiteSpace:"nowrap",
-        textOverflow:"ellipsis",
-        overflow:"hidden"
+        whiteSpace: "nowrap",
+        textOverflow: "ellipsis",
+        overflow: "hidden"
     },
-    ui_picker_item_selected= {
+    ui_picker_item_selected = {
         height: "36px",
         lineHeight: "36px",
         textAlign: "center",
         color: "#999",
         fontSize: "18px",
-        whiteSpace:"nowrap",
-        textOverflow:"ellipsis",
-        overflow:"hidden",
+        whiteSpace: "nowrap",
+        textOverflow: "ellipsis",
+        overflow: "hidden",
         color: "#000"
-        },
-    ui_picker_center={
-            height: "36px",
-            boxSizing: "border-box",
-            position: "absolute",
-            left: 0,
-            width: "100%",
-            top: "50%",
-            zIndex: 100,
-            marginTop: "-18px",
-            pointerEvents: "none",
-            borderTop: "1px solid #d7d7d7",
-            borderBottom: "1px solid #d7d7d7"
-        },
-    ui_popup_title={
-            height: "44px",
-            fontSize: "17px",
-            background: "#ccc",
-            padding: "0 10px",
-            lineHeight: "44px",
     },
-    btn_left={
+    ui_picker_center = {
+        height: "36px",
+        boxSizing: "border-box",
+        position: "absolute",
+        left: 0,
+        width: "100%",
+        top: "50%",
+        zIndex: 100,
+        marginTop: "-18px",
+        pointerEvents: "none",
+        borderTop: "1px solid #d7d7d7",
+        borderBottom: "1px solid #d7d7d7"
+    },
+    ui_popup_title = {
+        height: "44px",
+        fontSize: "17px",
+        background: "#ccc",
+        padding: "0 10px",
+        lineHeight: "44px",
+    },
+    btn_left = {
         display: "inline-block",
         float: "left",
         color: "#007aff"
     },
-    btn_right={
+    btn_right = {
         display: "inline-block",
         float: "right",
         color: "#007aff"
     },
-    pickerModal={
+    pickerModal = {
         position: "absolute",
         left: 0,
         bottom: 0,
@@ -134,25 +134,26 @@ export const swiper_container ={
         backgroundColor: "#efeff4",
         transform: "translate(0, 100%)",
         backfaceVisibility: "hidden",
-        transition: "transform .3s"
+        transition: "transform .3s",
+        touchAction: 'none'
     },
-    ui_popup_content={
+    ui_popup_content = {
         height: "200px",
         width: "100%",
         display: "flex",
         overflow: "hidden",
         // -webkit-overflow-scrolling : touch,
     },
-    modal_overlay ={
+    modal_overlay = {
         position: "fixed",
         top: 0,
         left: 0,
-        bottom:0,
+        bottom: 0,
         zIndex: 1000,
-        backgroundColor:"rgba(11,11,11,0.4)",
+        backgroundColor: "rgba(11,11,11,0.4)",
         width: "100%"
     },
-    modal ={
+    modal = {
         position: "fixed",
         top: "calc(100% - 260px)",
         left: 0,
@@ -163,7 +164,7 @@ export const swiper_container ={
         width: "100%",
         height: "260px",
     },
-    pickerModalActive={
+    pickerModalActive = {
         position: "absolute",
         left: 0,
         bottom: 0,
@@ -173,15 +174,15 @@ export const swiper_container ={
         backfaceVisibility: "hidden",
         transition: "transform .3s",
         transform: "translate(0, 0)",
-        },
-    datePicker_labels={
-        display:"flex",
-        height:"44px",
-        lineHeight:"44px",
-        backgroundColor: "rgb(221, 221, 221)",
-        borderBottom:'1px solid rgba(0, 0, 0, 0.1)'
     },
-    datePicker_label={
-        flex:1,
-        textAlign:"center"
+    datePicker_labels = {
+        display: "flex",
+        height: "44px",
+        lineHeight: "44px",
+        backgroundColor: "rgb(221, 221, 221)",
+        borderBottom: '1px solid rgba(0, 0, 0, 0.1)'
+    },
+    datePicker_label = {
+        flex: 1,
+        textAlign: "center"
     }
